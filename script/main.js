@@ -1,20 +1,19 @@
-
+/*
+ * qui definisco il numero dei quadrati per linea ed il numero di mine
+ */
+var numberOfmines = 20;
+var numberOfrows = 15;
 
 /*
- * Salva il contenitore dentro una variabile
+ * calcolo dimensione e popolo la griglia
  */
+var marginScalefactor = 0.06;
+refreshgridsize(numberOfrows, marginScalefactor);
+populategrid(numberOfrows);
 
-/* ------------------------------------------------------------------------ */
+spawnmine(numberOfmines, numberOfrows);
 
 
-/*
- * qui definisco il numero dei quadrati per linea e lo scale factor del margine
- */
-var numberOfrows = 10;
-var scalefactor = 0.05;
-/* ------------------------------------------------------------------------ */
-refreshgrid(numberOfrows, scalefactor);
-//spawnmine(20, numberOfrows);
-window.addEventListener('resize', function(){
-    refreshgrid(numberOfrows, scalefactor);
+window.addEventListener('resize', function() {
+    refreshgridsize(numberOfrows, marginScalefactor);
 });

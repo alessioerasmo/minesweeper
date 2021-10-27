@@ -1,5 +1,10 @@
 :root {
---innerblock_size: 80px;
---innerblock_color: #fff;
---innerblock_margin: 6px;
+    --innerblock_size: 80px;
+    --innerblock_color: #fff;
+    --innerblock_margin: 6px;
+}
+
+@font-face {
+    font-family: 'KaffeesatzBold';
+    src: url(../font/Yanone_Kaffeesatz/static/YanoneKaffeesatz-Bold.ttf);
 }
