@@ -1,0 +1,35 @@
+body{
+    display:flex;
+    justify-content: center;
+}
+#box{
+    background-color: #ddd;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: var(--innerblock_margin);
+    border-radius: 5px;
+}
+.innerbox{
+    background-color: var(--innerblock_color);
+    border-radius: 5px;
+    transition-duration: 200ms;
+    width: var(--innerblock_size);
+    height: var(--innerblock_size);
+    margin: var(--innerblock_margin);
+}
+
+.innerbox:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+
+#exit{
+    /*
+    background-color: #555;   
+    */
+}
