@@ -4,14 +4,8 @@ function innerfill(row, column, object) {
     element.innerHTML = object;
 }
 
-
-
 function spawnmine(mines, max) {
 
-    /*
-    for (var i; i<parseInt(mines, 10); i++)
-    console.log( Math.floor(1 + Math.random() * parseInt(max, 10)) );
-    */
     mines = parseInt(mines, 10);
     max = parseInt(max, 10);
 

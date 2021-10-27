@@ -1,38 +1,36 @@
-/*
- * Salva il contenitore dentro una variabile
- */
+
+
+function refreshgrid(numberOfrows,scalefactor) {
+
 var box = document.getElementById("box");
+
+var boxscale;
+if (window.innerWidth > 1500)
+    boxscale = 0.4;
+else boxscale = 0.7;
+
+var boxwidth = window.innerWidth*boxscale;
+//var boxwidth = (box.getBoundingClientRect().width);   box.style.width 
+
+
+var blocksize = (boxwidth) / (numberOfrows + 2 * numberOfrows * scalefactor);
+var blockmargin = blocksize * scalefactor;
+console.log(boxwidth);
+console.log(blocksize);
+console.log(blockmargin);
+console.log(numberOfrows * (blocksize + 2 * blockmargin));
+
+document.documentElement.style.setProperty("--innerblock_size", blocksize+"px");
+document.documentElement.style.setProperty("--innerblock_margin", blockmargin+"px");
+box.style.width = (boxwidth+(2*blockmargin))+"px";
+
+
+console.log(getComputedStyle(document.documentElement).getPropertyValue('--innerblock_size'));
+console.log(getComputedStyle(document.documentElement).getPropertyValue('--innerblock_margin'));
+
+
+//box.style.width = blockwidth * numberOfrows + 'px';
 /* ------------------------------------------------------------------------ */
-
-
-/*
- * qui definisco il numero dei quadrati per linea
- */
-var numberOfrows = 10;
-/* ------------------------------------------------------------------------ */
-
-
-/*
- * cattura da variables.css il valore della larghezza di un blocco e del margine.
- * Tolgo gli ultimi due caratteri, cioè 'px', in modo che resti solo il valore 
- * numerico e poi faccio il parseint(stringa, base numerazione), in modo tale
- * da poter fare le somme. 
- * imposto la larghezza del box in modo tale da far entrare su una linea gli 
- * elementi che mi interessano
- */
-var blocksize = getComputedStyle(document.documentElement).getPropertyValue('--innerblock_size');
-var blockmargin = getComputedStyle(document.documentElement).getPropertyValue('--innerblock_margin');
-
-blocksize = blocksize.substring(0, blocksize.length - 2);
-blockmargin = blockmargin.substring(0, blockmargin.length - 2);
-
-var blocksize = parseInt(blocksize, 10);
-var blockwidth = parseInt(blockmargin, 10);
-blockwidth = blocksize + 2 * blockwidth;
-
-box.style.width = blockwidth * numberOfrows + 'px';
-/* ------------------------------------------------------------------------ */
-
 
 /*
  * il ciclo for serve a generare il codice html che verrà poi aggiunto al 
@@ -53,10 +51,10 @@ for (var i = 0; i < numberOfrows * numberOfrows; i++) {
 
     content += "<p class='innerbox' id='box" +
         row + column
-        + "'></p>";
-        // per veder se le caselle sono numerate bene" + row + ';' + column + "
+        + "'>" + row + ';' + column + "</p>";
+    // per veder se le caselle sono numerate bene" + row + ';' + column + "
 }
 box.innerHTML = content;
 /* ------------------------------------------------------------------------ */
 
-spawnmine(20, numberOfrows);
+}
