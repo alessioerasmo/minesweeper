@@ -2,6 +2,8 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    font-family: KaffeesatzBold;
+
 }
 
 .title {
@@ -9,7 +11,6 @@ body {
     margin: 0;
     width: 100%;
     text-align: center;
-    font-family: KaffeesatzBold;
 }
 
 #maintitle {
@@ -39,15 +40,21 @@ body {
     justify-content: center;
     border-radius: 5px;
     gap: 0px 0px;
+    margin: 2px solid red;
 }
 
 .innerbox {
+    position:relative;
     background-color: var(--innerblock_color);
     border-radius: 5px;
     transition-duration: 200ms;
     width: var(--innerblock_size);
     height: var(--innerblock_size);
     margin: var(--innerblock_margin);
+    font-weight: bold;
+    text-align: center;
+    overflow: hidden;
+    font-size: 30px;
 }
 
 .innerbox:hover {
@@ -57,4 +64,12 @@ body {
 
 #boxmanagement {
     border: 2px solid red;
+}
+
+#mine{
+    width: 80%;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

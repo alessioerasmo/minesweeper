@@ -4,6 +4,8 @@
  */
 function refreshgridsize(numberOfrows, scalefactor) {
     var box = document.getElementById("box");
+    box.style.opacity = "0";
+
 
     //gestione ridimensionamento al variare della risoluzione
     var boxscale;
@@ -37,6 +39,10 @@ function refreshgridsize(numberOfrows, scalefactor) {
 
 
     // ----------------------------------------------------------------
+
+    
+    box.style.opacity = "1";
+
 }
 
 
@@ -62,7 +68,7 @@ function populategrid(numberOfrows) {
                 column++;
         }
         content += "<p class='innerbox' id='box" +
-            row + column +
+            row + "e" + column +
             "'></p>";
         //per verificare il giusto numeramento -> " + row + ';' + column + "
     }
