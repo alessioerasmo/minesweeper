@@ -4,7 +4,6 @@
  */
 function refreshgridsize(numberOfrows, scalefactor) {
     var box = document.getElementById("box");
-    box.style.opacity = "0";
 
 
     //gestione ridimensionamento al variare della risoluzione
@@ -41,7 +40,6 @@ function refreshgridsize(numberOfrows, scalefactor) {
     // ----------------------------------------------------------------
 
     
-    box.style.opacity = "1";
 
 }
 
