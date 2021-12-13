@@ -2,9 +2,7 @@
  * invoco questa funzione quando voglio ridimensionare i blocchi ed il box 
  * per adattarli alla dimensione della finestra del browser
  */
-function refreshgridsize(numberOfrows) {
-
-    var scalefactor = 0.06;
+function refreshgridsize(numberOfrows, scalefactor) {
     var box = document.getElementById("box");
 
 
@@ -39,43 +37,40 @@ function refreshgridsize(numberOfrows) {
     document.getElementById("boxmanagement").style.margin = "0px " + (boxmanagementsize * 0.1) + "px";
 
 
-    // ---------------------------------------------------------------
+    // ----------------------------------------------------------------
+
+    
 
 }
 
 
 /*
- * questa funzione ha il compito di generare la rappresentazione virtuale della 
- * griglia nella memoria
+ * richiamo questa funzione quando voglio popolare il box con il numero di box 
+ * che desidero
  */
-function generateVirtualGrid(numberOfrows) {
-    var grid = new Array(numberOfrows);
-    for (var i = 0; i < numberOfrows; i++) {
-        grid[i] = new Array(numberOfrows);
-        for (var j = 0; j < numberOfrows; j++) {
-            var identifier = "box" + i + "," + j;
-            grid[i][j] = new Node(identifier);
-        }
-    }
-    return grid;
-}
-
-
-/*
- * richiamo questa funzione quando voglio generare graficamente la griglia
- */
-function populategrid(grid) {
-
+function populategrid(numberOfrows) {
+    /*
+     * il ciclo for serve a generare il codice html che verrà poi aggiunto al 
+     * box mediante un innerHTML
+     */
     var content = "";
-    for (var i = 0; i < grid.length; i++)
-        for (var j = 0; j < grid[i].length; j++) {
-            //if (grid[i][j].getValue() != null)
-            var specificContent = grid[i][j].getValue() == 0 ? '<img id="mine" src="images/mine.svg">' : grid[i][j].getValue();
-            //grid[i][j].toString().substring(3, grid[i][j].length);
-            //grid[i][j].toString().substring(3, grid[i][j].length);
-            content += "<p class='innerbox' id=" + grid[i][j].toString() + "'>" + specificContent + "</p>";
+    for (var i = 0; i < numberOfrows * numberOfrows; i++) {
+        /*identifico il numero della riga mediante l'aritmetica modulare*/
+        row = i % numberOfrows + 1;
+        /*identifico la seconda linea iterando*/
+        column = 1;
+        var for_value = i + 1;
+        for (var k = 0; k < numberOfrows; k++) {
+            for_value -= numberOfrows;
+            if (for_value > 0)
+                column++;
         }
-
-    document.getElementById("box").innerHTML = content;
+        content += "<p class='innerbox' id='box" +
+            row + "e" + column +
+            "'></p>";
+        //per verificare il giusto numeramento -> " + row + ';' + column + "
+    }
+    box.innerHTML = content;
+    /* ------------------------------------------------------------------------ */
 
 }

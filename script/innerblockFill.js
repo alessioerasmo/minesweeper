@@ -1,56 +1,18 @@
-
-/*
- * funzione richiamata per riempire un campo con un oggetto, che sia mina, numero 
- * o altro non cambia, in caso di codice html formattarlo correttamente come stringa 
- * e passarlo al parametro object
- */
-function innerfill(row, column, object) {
-    var element = document.getElementById("box" + row + "e" + column);
-    
-    var numbercolors = ["black", "blue", "green", "orange", "red"];
-
-    if (object == "1")
-    if (element.textContent != "")
-        {
-            var number = parseInt(element.textContent, 10);
-            number+= 1;
-            object = number;
-            element.style.color = numbercolors[number-1];     
-        }
-            
-       
-
-    /*
-     * se l'oggetto da posizionare è una mina posiziona l'immagine 
-     */    
-    if (object == "mine"){
-        object = "<img id ='mine' src='images/mine.svg'>";
-    }
-
-
-
-    element.innerHTML = object;
-   
-}
-
 /*
  * richiamo questa funzione quando voglio piazzare le mine, la funzione chiama in 
  * automatico tutte le funzioni necessarie alla generazione dei numeri
  */
-function spawnmine(mines, numberOfrows) {
-
+function spawnmine(mines, grid) {
     mines = parseInt(mines, 10);
-    numberOfrows = parseInt(numberOfrows, 10);
-
     var spawnedmines = 0;
-    while ( spawnedmines < mines ) {
-        var random1 = Math.floor(1 + Math.random() * numberOfrows);
-        var random2 = Math.floor(1 + Math.random() * numberOfrows);
-        var block = document.getElementById("box" + random1 + "e" + random2);
-        if (block.innerHTML !== '<img id="mine" src="images/mine.svg">') {
-            mineswarning(random1, random2);
-            innerfill(random1, random2, "mine");
+    while (spawnedmines < mines) {
+        var mineRow = Math.floor(Math.random() * numberOfrows);
+        var mineColumn = Math.floor(Math.random() * numberOfrows);
+        if (grid[mineRow][mineColumn].getValue() !== 0) {
+            //setto il nodo specifico come mina
+            grid[mineRow][mineColumn].setValue(0);
             spawnedmines++;
+            mineswarning(mineRow, mineColumn, grid);
             /*
             var mine = block.firstChild;
             mine.style.opacity = 0.1;
@@ -59,24 +21,27 @@ function spawnmine(mines, numberOfrows) {
         */
         }
     }
-    //console.log(spawnedmines);
+
 }
 
-function mineswarning(row, column) {
+function mineswarning(mineRow, mineColumn, grid) {
     //console.log("mina" + row + column);
 
-    
-    for (var x =-1 ; x<2; x++ )
-        for (var y=-1; y<2; y++){
-            var box = document.getElementById("box" + (row+x) + "e" + (column+y))
-            if ( box != null && box.innerHTML != '<img id="mine" src="images/mine.svg">' )
-                innerfill((row+x), (column+y), "1");
-        }
-     
-}
 
-function changeboxvalue(row, column) {
-    var tofill = document.getElementById("box" + random1 + random2);
+    for (var x = -1; x < 2; x++)
+        for (var y = -1; y < 2; y++) {
+            if (mineRow + x < grid.length && mineRow + x >= 0)
+                if (mineColumn + y < grid[0].length && mineColumn + y >= 0) {
+                    var node = grid[mineRow + x][mineColumn + y];
+                    if (node.getValue() == null) node.setValue(1);
+                    else if (node.getValue() == 0) node.setValue(0);
+                    else {
+                        node.setValue(node.getValue() + 1);
+                    }
+
+
+                }
+        }
 
 }
 
@@ -84,11 +49,7 @@ function changeboxvalue(row, column) {
  * questa funzione ha il compito di ripulire tutto il campo
  */
 function cleanfield(row, column, numberOfrows) {
-    for (var i = 0; i < numberOfrows; i++) {
-        for (var j = 0; j < numberOfrows; j++) {
-            innerfill(i, j, "");
-        }
-    }
+
 }
 
 /*
@@ -96,9 +57,6 @@ function cleanfield(row, column, numberOfrows) {
  * casella una volta cliccatocisi sopra
  */
 
-function showmine(){
-
-    console.log("sono dentro");
-    this.style.opacity = 1;
+function showmine() {
 
 }
