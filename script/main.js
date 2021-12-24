@@ -6,7 +6,6 @@ class Node {
     constructor(identifier) {
         this.isCovered = false;
         this.identifier = identifier;
-        console.log(this.toString());
     }
 
     setValue(value) {
@@ -46,10 +45,6 @@ var grid = generateVirtualGrid(numberOfrows);
 refreshgridsize(numberOfrows);
 spawnmine(numberOfmines, grid);
 populategrid(grid);
-
-
-console.log(Math.floor(Math.random() * 10));
-
 
 
 window.addEventListener('resize', function() {
