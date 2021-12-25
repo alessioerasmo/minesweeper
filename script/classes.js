@@ -6,6 +6,7 @@ class Node {
     constructor(identifier) {
         this.clickable = true;
         this.identifier = identifier;
+        this.flagged = false;
     }
 
     setValue(value) {
@@ -25,7 +26,7 @@ class Node {
         this.clickable = clickable;
     }
 
-    isClickable(){
+    isClickable() {
         return this.clickable;
     }
 
@@ -33,6 +34,15 @@ class Node {
 
     toString() {
         return this.identifier;
+    }
+    flag() {
+        this.flagged = true;
+    }
+    unflag() {
+        this.flagged = false;
+    }
+    isFlagged() {
+        return this.flagged;
     }
 }
 
@@ -43,12 +53,12 @@ class Node {
 
 class Stack {
 
-     constructor(){
+    constructor() {
         this.up = null;
-        this.size = 0;    
+        this.size = 0;
     }
 
-    push(element){
+    push(element) {
         if (this.size == 0)
             this.up = new StackElement(element, null);
         else
@@ -56,8 +66,8 @@ class Stack {
         this.size++;
     }
 
-    pop(){
-        if (this.size > 0){
+    pop() {
+        if (this.size > 0) {
             var element = this.up.element;
             this.up = this.up.down;
             this.size--;
@@ -65,7 +75,7 @@ class Stack {
         } else return null;
     }
 
-    pick(){
+    pick() {
         return this.up.element;
     }
 
@@ -73,71 +83,71 @@ class Stack {
         return this.size;
     }
 
-    printstack(){
+    printstack() {
         var el = this.up;
-        for (var i=0; i<this.size; i++){
+        for (var i = 0; i < this.size; i++) {
             console.log(el.element);
             el = el.down;
-        }   
+        }
     }
 
-    
-    teststack(){
+
+    teststack() {
         var stack = new Stack;
         stack.push(1);
         stack.push(2);
         stack.push(3);
         stack.push(4);
         console.log("ora la dimensione dello stack è " + stack.size);
-        
+
         stack.printstack();
-        
+
         console.log("faccio una pop: ");
         stack.pop();
         console.log("ora la dimensione dello stack è " + stack.size);
         stack.printstack();
-        
+
         console.log("faccio una pop: ");
         stack.pop();
         console.log("ora la dimensione dello stack è " + stack.size);
         stack.printstack();
-        
+
         console.log("faccio 2 push: ");
         stack.push(12);
         stack.push(4);
         stack.printstack();
-        
+
         console.log("ora la dimensione dello stack è " + stack.size);
-        
+
         stack.push(1);
         stack.push(2);
         stack.push(3);
         stack.push(4);
         console.log("ora la dimensione dello stack è " + stack.size);
-        
+
         stack.printstack();
-        
+
         var num = stack.getsize();
-        for (var i=0; i<num; i++)
+        for (var i = 0; i < num; i++)
             console.log("ho rimosso " + stack.pop());
-        
+
         stack.printstack();
         console.log(stack.getsize());
-        
+
         stack.push("pippo");
         stack.printstack();
         console.log(stack.getsize());
-        
+
         stack.pop();
         stack.printstack();
         console.log(stack.getsize());
-            }
+    }
 
 }
 
 class StackElement {
 
-    constructor(element, down){
+    constructor(element, down) {
         this.down = down;
         this.element = element;
     }

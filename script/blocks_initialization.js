@@ -1,18 +1,18 @@
 /* 
  * Funzione blackbox che si occupa della generazione in toto della griglia 
  */
-function newgame(numberOfrows, numberOfmines){
-    
+function newgame(numberOfrows, numberOfmines) {
+
     var grid = generateVirtualGrid(numberOfrows);
 
-refreshgridsize(numberOfrows);
-spawnmine(numberOfmines, grid);
-populategrid(grid);
-
-
-window.addEventListener('resize', function() {
     refreshgridsize(numberOfrows);
-});
+    spawnmine(numberOfmines, grid);
+    populategrid(grid);
+
+
+    window.addEventListener('resize', function() {
+        refreshgridsize(numberOfrows);
+    });
     return grid;
 }
 
@@ -32,8 +32,8 @@ function refreshgridsize(numberOfrows) {
     //gestione ridimensionamento al variare della risoluzione
     var boxscale;
     if (window.innerWidth > 1500)
-        boxscale = 0.35;
-    else boxscale = 0.65;
+        boxscale = 0.30;
+    else boxscale = 0.60;
     // ----------------------------------------------------------------
 
     /*
@@ -59,7 +59,10 @@ function refreshgridsize(numberOfrows) {
     document.getElementById("boxmanagement").style.width = boxmanagementsize + "px";
     document.getElementById("boxmanagement").style.margin = "0px " + (boxmanagementsize * 0.1) + "px";
 
-
+    document.getElementById("flag").style.width = window.innerWidth * 0.025 + "px";
+    document.getElementById("flag").style.height = window.innerWidth * 0.025 + "px";
+    document.getElementById("flag").style.margin = window.innerWidth * 0.0125 + "px";
+    document.getElementById("flag").style.padding = window.innerWidth * 0.006125 + "px";
     // ---------------------------------------------------------------
 
 }
@@ -76,7 +79,7 @@ function generateVirtualGrid(numberOfrows) {
         for (var j = 0; j < numberOfrows; j++) {
             var identifier = "box" + i + "," + j;
             grid[i][j] = new Node(identifier);
-            
+
         }
     }
     return grid;
@@ -109,5 +112,3 @@ function populategrid(grid) {
         }
     */
 }
-
-

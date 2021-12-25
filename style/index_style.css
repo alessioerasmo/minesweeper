@@ -3,7 +3,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     font-family: KaffeesatzBold;
-
+    background-color: #fefefe;
 }
 
 .title {
@@ -32,6 +32,7 @@ body {
     position: relative;
     left: 50%;
     transform: translate(-50%,0);
+    background-color: #ddd;
     */
     background-color: #ddd;
     display: flex;
@@ -40,13 +41,12 @@ body {
     justify-content: center;
     border-radius: 5px;
     gap: 0px 0px;
-    margin: 2px solid red;
 }
 
 .innerbox {
-    position:relative;
+    position: relative;
     background-color: var(--innerblock_color);
-    border-radius: 5px;
+    border-radius: 15%;
     transition-duration: 200ms;
     width: var(--innerblock_size);
     height: var(--innerblock_size);
@@ -58,19 +58,50 @@ body {
     opacity: 0.5;
 }
 
+.innerboxflag {
+    margin: 0;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .innerbox:hover {
     transform: scale(1.2);
     cursor: pointer;
 }
 
 #boxmanagement {
-    border: 2px solid red;
+    border-radius: 2%;
+    background-color: #f0f0f0;
 }
 
-#mine{
+#mine {
     width: 80%;
-    position:absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#flag {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+#messagebox {
+    position: relative;
+    width: 100%;
+}
+
+#message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
