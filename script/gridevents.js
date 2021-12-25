@@ -23,6 +23,10 @@ function boxclickevent(i, j){
         element.textContent = grid[i][j].getValue();
         element.style.opacity = 1;
         console.log(grid[i][j].getValue());
+        clicked++;
+        if (clicked == ((numberOfrows*numberOfrows)- numberOfmines))
+            wingame();
+            grid[i][j].setClickable(false);
     }
     else 
         //ho beccato uno spazio bianco, quindi trovo quelli intorno
@@ -59,7 +63,10 @@ function recursivevoidblocksvisit(stack){
                     grid[newi][newj].setValue(-2);
                     //codice che modella la vista
                     document.getElementById(grid[newi][newj].toString()).style.opacity = 1;
-                    
+                    clicked++;
+                    if (clicked == ((numberOfrows*numberOfrows)- numberOfmines))
+                        wingame();
+                        grid[newi][newj].setClickable(false);       
                 }
                 if (grid[newi][newj].getValue() > 0){
                     boxclickevent(newi, newj);
@@ -68,4 +75,12 @@ function recursivevoidblocksvisit(stack){
         }
    recursivevoidblocksvisit(stack);     
 }
+}
+
+
+function wingame() {
+    console.log("hai vinto!");
+    for (var a = 0; a<grid.length; a++)
+    for (var b = 0; b<grid[a].length; b++)
+        grid[a][b].setClickable(false);
 }

@@ -1,3 +1,24 @@
+/* 
+ * Funzione blackbox che si occupa della generazione in toto della griglia 
+ */
+function newgame(numberOfrows, numberOfmines){
+    
+    var grid = generateVirtualGrid(numberOfrows);
+
+refreshgridsize(numberOfrows);
+spawnmine(numberOfmines, grid);
+populategrid(grid);
+
+
+window.addEventListener('resize', function() {
+    refreshgridsize(numberOfrows);
+});
+    return grid;
+}
+
+
+
+
 /*
  * invoco questa funzione quando voglio ridimensionare i blocchi ed il box 
  * per adattarli alla dimensione della finestra del browser
