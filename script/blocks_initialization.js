@@ -70,15 +70,23 @@ function populategrid(grid) {
     var content = "";
     for (var i = 0; i < grid.length; i++)
         for (var j = 0; j < grid[i].length; j++) {
-            if (grid[i][j].getValue() != null)
+
+            content += "<p class='innerbox' id=" + grid[i][j].toString() + " onclick='boxclickevent(" + i + " ," + j + ")'> </p>";
+        }
+
+    document.getElementById("box").innerHTML = content;
+
+
+    /*
+    PER CONTROLLARE CONTENUTO BOX
+
+    if (grid[i][j].getValue() != null)
                 var specificContent = grid[i][j].getValue() == 0 ? '<img id="mine" src="images/mine.svg">' : grid[i][j].getValue();
             else
                 var specificContent = '';
             content += "<p class='innerbox' id=" + grid[i][j].toString() + " onclick='boxclickevent(" + i + " ," + j + ")'>" + specificContent + "</p>";
         }
-
-    document.getElementById("box").innerHTML = content;
-
+    */
 }
 
 

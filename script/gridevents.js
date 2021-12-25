@@ -3,10 +3,17 @@
  * in funzione del suo contenuto
  */
 function boxclickevent(i, j){
-    if (grid[i][j].getValue() == 0)
+    if (grid[i][j].getValue() == 0){
+        document.getElementById(grid[i][j].toString()).innerHTML = '<img id="mine" src="images/mine.svg">';
+        document.getElementById(grid[i][j].toString()).style.opacity = 1;
         console.log("hai perso!");
-    else if (grid[i][j].getValue() > 0)
+    }
+    else if (grid[i][j].getValue() > 0){
+        var specificContent = grid[i][j].getValue();
+        document.getElementById(grid[i][j].toString()).textContent = specificContent;
+        document.getElementById(grid[i][j].toString()).style.opacity = 1;
         console.log(grid[i][j].getValue());
+    }
     else 
         voidblocksvisit(i, j);
     }
@@ -39,8 +46,11 @@ function recursivevoidblocksvisit(stack){
                     stack.push(newj);
                     grid[newi][newj].setValue(-2);
                     //codice che modella la vista
-                    document.getElementById(grid[newi][newj].toString()).style.opacity = 0.5;
+                    document.getElementById(grid[newi][newj].toString()).style.opacity = 1;
                     
+                }
+                if (grid[newi][newj].getValue() > 0){
+                    boxclickevent(newi, newj);
                 }
             }
         }
