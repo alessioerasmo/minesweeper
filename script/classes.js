@@ -4,7 +4,7 @@
 class Node {
 
     constructor(identifier) {
-        this.isCovered = false;
+        this.clickable = true;
         this.identifier = identifier;
     }
 
@@ -21,8 +21,12 @@ class Node {
         return this.value;
     }
 
-    setCovered(isCovered) {
-        this.isCovered = isCovered;
+    setClickable(clickable) {
+        this.clickable = clickable;
+    }
+
+    isClickable(){
+        return this.clickable;
     }
 
     isCovered() { return this.isCovered; }

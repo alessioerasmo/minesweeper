@@ -2,8 +2,8 @@
 /*
  * qui definisco il numero dei quadrati per linea ed il numero di mine
  */
-var numberOfrows = 15;
-var numberOfmines = 20;
+var numberOfrows = 5;
+var numberOfmines = 5;
 
 var grid = generateVirtualGrid(numberOfrows);
 
