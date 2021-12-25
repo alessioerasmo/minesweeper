@@ -46,7 +46,7 @@ function refreshgridsize(numberOfrows) {
 
 /*
  * questa funzione ha il compito di generare la rappresentazione virtuale della 
- * griglia nella memoria
+ * griglia nella memoria, la griglia che genera contiene solo spazi vuoti
  */
 function generateVirtualGrid(numberOfrows) {
     var grid = new Array(numberOfrows);
@@ -55,6 +55,7 @@ function generateVirtualGrid(numberOfrows) {
         for (var j = 0; j < numberOfrows; j++) {
             var identifier = "box" + i + "," + j;
             grid[i][j] = new Node(identifier);
+            
         }
     }
     return grid;
@@ -80,6 +81,4 @@ function populategrid(grid) {
 
 }
 
-function boxclickevent(i, j){
-    console.log("hai cliccato: " + grid[i][j].toString());
-    }
+
