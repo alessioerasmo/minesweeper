@@ -25,11 +25,7 @@ function boxclickevent(i, j) {
                 element.innerHTML = '<img id="mine" src="images/mine.svg">';
                 element.style.opacity = 1;
                 //disattivo tutte le caselle
-                for (var a = 0; a < grid.length; a++)
-                    for (var b = 0; b < grid[a].length; b++)
-                        grid[a][b].setClickable(false);
-                //comunico la sconfitta, il gioco è finito
-                console.log("hai perso!");
+                losegame();
             } else if (grid[i][j].getValue() > 0) {
                 //se ho beccato un numero lo scrivo
                 //element.innerHTML = "<p class='innerboxflag'>" + grid[i][j].getValue() + "</p>";
@@ -107,8 +103,17 @@ function flagswitch() {
 
 
 function wingame() {
-    console.log("hai vinto!");
     for (var a = 0; a < grid.length; a++)
         for (var b = 0; b < grid[a].length; b++)
             grid[a][b].setClickable(false);
+    var element = document.getElementById("messagebox");
+    element.innerHTML = "<p id='message'> Hai Vinto </p> <p id='messagebutton'> Riprova </p>";
+}
+
+function losegame() {
+    for (var a = 0; a < grid.length; a++)
+        for (var b = 0; b < grid[a].length; b++)
+            grid[a][b].setClickable(false);
+    var element = document.getElementById("messagebox");
+    element.innerHTML = "<p id='message'> Hai perso la partita </p> <p id='messagebutton'> Riprova </p>";
 }

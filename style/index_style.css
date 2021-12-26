@@ -44,6 +44,10 @@ body {
 }
 
 .innerbox {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     position: relative;
     background-color: var(--innerblock_color);
     border-radius: 15%;
@@ -73,8 +77,25 @@ body {
 }
 
 #boxmanagement {
+    margin: 0;
     border-radius: 2%;
     background-color: #f0f0f0;
+}
+
+#moreless {
+    position: relative;
+    left: -15px;
+    top: 5px;
+    height: 20px;
+}
+
+#moreless_img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    width: 10px;
 }
 
 #mine {
@@ -98,10 +119,17 @@ body {
 #messagebox {
     position: relative;
     width: 100%;
+    border: 2px solid red;
 }
 
 #message {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
+    display: inline-block;
+    border: 2px solid red;
+}
+
+#messagebutton {
+    text-align: center;
+    display: inline-block;
+    border: 2px solid red;
 }

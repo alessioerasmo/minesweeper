@@ -32,7 +32,7 @@ function refreshgridsize(numberOfrows) {
     //gestione ridimensionamento al variare della risoluzione
     var boxscale;
     if (window.innerWidth > 1500)
-        boxscale = 0.30;
+        boxscale = 0.35;
     else boxscale = 0.60;
     // ----------------------------------------------------------------
 
@@ -57,7 +57,7 @@ function refreshgridsize(numberOfrows) {
 
     var boxmanagementsize = (window.innerWidth - calc) > (window.innerWidth * 0.2) ? (window.innerWidth * 0.2) : (window.innerWidth - calc);
     document.getElementById("boxmanagement").style.width = boxmanagementsize + "px";
-    document.getElementById("boxmanagement").style.margin = "0px " + (boxmanagementsize * 0.1) + "px";
+    document.getElementById("moreless").style.margin = "0px " + (boxmanagementsize * 0.1) + "px 0px 0px";
 
     document.getElementById("flag").style.width = window.innerWidth * 0.025 + "px";
     document.getElementById("flag").style.height = window.innerWidth * 0.025 + "px";
