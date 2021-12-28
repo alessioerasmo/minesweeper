@@ -177,14 +177,22 @@ body {
 .button{
     display: inline-block;
     text-align: center;
-    margin: 3% 0px 3% 50%;
-    transform: translateX(-50%);
     padding: 2% 5%;
     cursor: pointer;
     width: auto;
-    background-color: #111;
+    background-color: #222;
     color: white;
     border-radius: 10%;
+    transition-duration: 200ms;
+}
+
+.button:hover{
+    transform: scale(1.1);
+}
+
+#menubutton{
+    margin: 3% 0px 3% 50%;
+    transform: translateX(-50%);
 }
 
 #rows{

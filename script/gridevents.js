@@ -32,7 +32,6 @@ function boxclickevent(i, j) {
                 }
             } else if (grid[i][j].getValue() > 0) {
                 //se ho beccato un numero lo scrivo
-                //element.innerHTML = "<p class='innerboxflag'>" + grid[i][j].getValue() + "</p>";
                 element.innerHTML = "<img class='innerboxflag' src='images/" + grid[i][j].getValue() + ".svg'>";
                 element.style.opacity = 1;
                 console.log(grid[i][j].getValue());
@@ -42,7 +41,7 @@ function boxclickevent(i, j) {
                 grid[i][j].setClickable(false);
             } else
             //ho beccato uno spazio bianco, quindi trovo quelli intorno
-                voidblocksvisit(i, j);
+            voidblocksvisit(i, j);
         }
     }
 }
@@ -111,7 +110,7 @@ function wingame() {
         for (var b = 0; b < grid[a].length; b++)
             grid[a][b].setClickable(false);
     var element = document.getElementById("messagebox");
-    element.innerHTML = "<p id='message'> Hai Vinto </p> <p id='messagebutton'> Riprova </p>";
+    element.innerHTML = "<p id='message'> Hai Vinto </p> <p id='messagebutton' class='button' onclick='grid=customgame(numberOfrows, numberOfmines);'> Nuova Partita </p>";
     document.getElementById("message").style.marginBottom = "0.5%";
 }
 
@@ -126,7 +125,7 @@ function losegame() {
             }
         }
     var element = document.getElementById("messagebox");
-    element.innerHTML = "<p id='message'> Hai perso la partita </p> <p id='messagebutton'> Riprova </p>";
+    element.innerHTML = "<p id='message'> Hai perso la partita </p> <p id='messagebutton' class='button' onclick='grid=customgame(numberOfrows, numberOfmines);'> Nuova Partita </p>";
     document.getElementById("message").style.marginBottom = "0.5%";
     
 }

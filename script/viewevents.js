@@ -18,7 +18,7 @@ function customgame(){
     numberOfrows = parseInt(document.getElementById("rows").value, 10);
     numberOfmines = parseInt(document.getElementById("mines").value, 10);
 
-    if(numberOfrows*numberOfrows >= numberOfmines)
+    if(numberOfrows*numberOfrows > numberOfmines)
         if (numberOfrows<50)
             grid = newgame(numberOfrows, numberOfmines);
 
