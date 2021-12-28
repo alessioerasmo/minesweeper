@@ -12,7 +12,7 @@ function boxclickevent(i, j) {
         if (flag) {
             if (!grid[i][j].isFlagged()) {
                 grid[i][j].flag();
-                element.innerHTML = "<img class='innerboxflag' src='images/flag.svg'></img>";
+                element.innerHTML = "<img class='innerboxflag' src='minesweeper/images/flag.svg'></img>";
                 element.style.opacity = 1;
             } else {
                 grid[i][j].unflag();
@@ -26,13 +26,13 @@ function boxclickevent(i, j) {
                     customgame();
                     boxclickevent(i, j);
                 } else {                //se non è il primo click ho perso
-                element.innerHTML = '<img id="mine" src="images/mine.svg">';
+                element.innerHTML = '<img id="mine" src="minesweeper/images/mine.svg">';
                 element.style.opacity = 1;
                 losegame();
                 }
             } else if (grid[i][j].getValue() > 0) {
                 //se ho beccato un numero lo scrivo
-                element.innerHTML = "<img class='innerboxflag' src='images/" + grid[i][j].getValue() + ".svg'>";
+                element.innerHTML = "<img class='innerboxflag' src='minesweeper/images/" + grid[i][j].getValue() + ".svg'>";
                 element.style.opacity = 1;
                 console.log(grid[i][j].getValue());
                 clicked++;
@@ -120,7 +120,7 @@ function losegame() {
             grid[a][b].setClickable(false);                                 //rendo le colonne non cliccabili
             if (grid[a][b].getValue() == 0){                                //mostro tutte le mine
                 var el = document.getElementById(grid[a][b].toString());
-                el.innerHTML = '<img id="mine" src="images/mine.svg">';
+                el.innerHTML = '<img id="mine" src="minesweeper/images/mine.svg">';
                 el.style.opacity= 0.5;
             }
         }

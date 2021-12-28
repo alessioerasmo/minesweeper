@@ -3,12 +3,12 @@ function show_moreless() {
     var boxmanagement = document.getElementById("boxmanagement");
     var box = document.getElementById("box");
     if (showbox){
-    element.innerHTML = '<img id="moreless_img" src="images/more.svg"/>';
+    element.innerHTML = '<img id="moreless_img" src="minesweeper/images/more.svg"/>';
     boxmanagement.style.display = "none";
     console.log(box.style.width); 
     }
     else{ 
-    element.innerHTML = '<img id="moreless_img" src="images/less.svg"/>';
+    element.innerHTML = '<img id="moreless_img" src="minesweeper/images/less.svg"/>';
     boxmanagement.style.display = "block";
     }
     showbox = !showbox;
