@@ -108,6 +108,7 @@ function wingame() {
             grid[a][b].setClickable(false);
     var element = document.getElementById("messagebox");
     element.innerHTML = "<p id='message'> Hai Vinto </p> <p id='messagebutton'> Riprova </p>";
+    document.getElementById("message").style.marginBottom = "0.5%";
 }
 
 function losegame() {
@@ -116,4 +117,5 @@ function losegame() {
             grid[a][b].setClickable(false);
     var element = document.getElementById("messagebox");
     element.innerHTML = "<p id='message'> Hai perso la partita </p> <p id='messagebutton'> Riprova </p>";
+    document.getElementById("message").style.marginBottom = "0.5%";
 }

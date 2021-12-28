@@ -21,20 +21,24 @@
     <!-- <h1 class="title" id="subtitle"> Di Alessio Erasmo </h1> -->
 
     <div id="boxmanagement">
-        <p>La tua partita partita</p>
-        <input id="rows"></input>
-        <input id="mines"></input>
+        <p id="managementtitle">Personalizza</p>
+        <p class="inputdescriptor">Righe</p><input class="gameinput" id="rows"></input>
+        <div></div>
+        <p class="inputdescriptor">Mine</p><input class="gameinput" id="mines"></input>
+
+        <div class="button" onclick="customgame()">Crea</div>
     </div>
-    <div id="moreless" onclick="show_moreless()"><img id="moreless_img" src="images/more.svg" /></div>
+    <div id="moreless" onclick="show_moreless()"><img id="moreless_img" src="images/less.svg"/></div>
 
 
     <div id="box">
     </div>
 
     <div id="flag" onclick="flagswitch()"> <img src="images/flag.svg"> </div>
-
+    <div id="separator"></div>
     <div id="messagebox">
-        <p id="message">Qui verrà visualizzato un messaggio</p>
+        <p id="message">Messaggi partita</p>
+        
     </div>
 
 </body>
