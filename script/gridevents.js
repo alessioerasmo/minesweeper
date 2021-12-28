@@ -21,11 +21,15 @@ function boxclickevent(i, j) {
             }
         } else if (!flag) {
             if (grid[i][j].getValue() == 0) {
-                //Se Ho beccato una minja
+                //Ho beccato una mina
+                if (clicked == 0){      //se è il primo click ho un'altra possibilità
+                    customgame();
+                    boxclickevent(i, j);
+                } else {                //se non è il primo click ho perso
                 element.innerHTML = '<img id="mine" src="images/mine.svg">';
                 element.style.opacity = 1;
-                //disattivo tutte le caselle
                 losegame();
+                }
             } else if (grid[i][j].getValue() > 0) {
                 //se ho beccato un numero lo scrivo
                 //element.innerHTML = "<p class='innerboxflag'>" + grid[i][j].getValue() + "</p>";
@@ -113,9 +117,16 @@ function wingame() {
 
 function losegame() {
     for (var a = 0; a < grid.length; a++)
-        for (var b = 0; b < grid[a].length; b++)
-            grid[a][b].setClickable(false);
+        for (var b = 0; b < grid[a].length; b++){
+            grid[a][b].setClickable(false);                                 //rendo le colonne non cliccabili
+            if (grid[a][b].getValue() == 0){                                //mostro tutte le mine
+                var el = document.getElementById(grid[a][b].toString());
+                el.innerHTML = '<img id="mine" src="images/mine.svg">';
+                el.style.opacity= 0.5;
+            }
+        }
     var element = document.getElementById("messagebox");
     element.innerHTML = "<p id='message'> Hai perso la partita </p> <p id='messagebutton'> Riprova </p>";
     document.getElementById("message").style.marginBottom = "0.5%";
+    
 }
